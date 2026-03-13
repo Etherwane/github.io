@@ -1,6 +1,5 @@
 title: 我的技术博客
 description: 网安学习笔记与技术分享
-theme: minima
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
