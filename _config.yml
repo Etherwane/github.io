@@ -10,3 +10,4 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+remote_theme: pmarsceill/just-the-docs
