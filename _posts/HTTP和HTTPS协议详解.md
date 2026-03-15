@@ -322,53 +322,35 @@ HTTPS连接建立过程
 ```
 
 ### HTTPS加密过程详解
-**1.客户端发送ClientHello**
-
-支持的TLS版本（TLS 1.2、TLS 1.3）
-
-支持的加密套件（如TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384）
-
-客户端随机数（Client Random）
+ **1.客户端发送ClientHello**
+  - 支持的TLS版本（TLS 1.2、TLS 1.3）
+  - 支持的加密套件（如TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384）
+  - 客户端随机数（Client Random）
 
 **2.服务端发送ServerHello + ServerHelloDone**
-
-选择的TLS版本和加密套件
-
-服务端随机数（Server Random）
-
-服务器证书（包含公钥）
-
-可选：请求客户端证书
+  - 选择的TLS版本和加密套件
+  - 服务端随机数（Server Random）
+  - 服务器证书（包含公钥）
+  - **可选：** 请求客户端证书
 
 **3.客户端验证服务器证书**
-
-验证证书是否过期
-
-验证证书是否被吊销
-
-验证证书链是否可信
-
-验证证书的域名是否匹配
+- 验证证书是否过期
+- 验证证书是否被吊销
+- 验证证书链是否可信
+- 验证证书的域名是否匹配
 
 **4.客户端生成会话密钥**
-
-客户端生成预主密钥（Pre-Master Secret）
-
-使用服务端公钥加密预主密钥
-
-使用Client Random、Server Random、Pre-Master Secret生成会话密钥
+- 客户端生成预主密钥（Pre-Master Secret）
+- 使用服务端公钥加密预主密钥
+- 使用Client Random、Server Random、Pre-Master Secret生成会话密钥
 
 **5.客户端发送ClientKeyExchange**
-
-加密的预主密钥
+- 加密的预主密钥
 
 **6.双方切换到加密通道**
-
-双方发送ChangeCipherSpec消息
-
-双方发送Finished消息（使用会话密钥加密）
-
-握手完成，开始加密通信
+- 双方发送ChangeCipherSpec消息
+- 双方发送Finished消息（使用会话密钥加密）
+- 握手完成，开始加密通信
 
 ### 4.3 SSL/TLS证书
 ```plaintxt
@@ -408,34 +390,24 @@ HTTPS连接建立过程
 
 #### 证书验证流程
 **1.验证证书有效期**
-
-检查notBefore和notAfter字段
-
-确保证书未过期
+- 检查notBefore和notAfter字段
+- 确保证书未过期
 
 **2.验证证书链**
-
-验证证书是否由可信CA颁发
-
-验证证书链的完整性
+- 验证证书是否由可信CA颁发
+- 验证证书链的完整性
 
 **3.验证证书吊销状态**
-
-CRL（证书吊销列表）
-
-OCSP（在线证书状态协议）
+- CRL（证书吊销列表）
+- OCSP（在线证书状态协议）
 
 **4.验证证书域名**
-
-验证CN字段或SAN字段
-
-确保域名匹配
+- 验证CN字段或SAN字段
+- 确保域名匹配
 
 **5.验证证书签名**
-
-使用CA的公钥验证签名
-
-确保证书未被篡改
+- 使用CA的公钥验证签名
+- 确保证书未被篡改
 
 ### 4.4 HTTPS安全威胁
 |威胁类型|	原理|	防御措施|
@@ -466,12 +438,9 @@ SQL语句变为：SELECT * FROM users WHERE username='admin' OR '1'='1' AND pass
 结果：绕过密码验证，以admin身份登录
 ```
 **防御措施：**
-
-1.使用参数化查询（PreparedStatement）
-
-2.对用户输入进行严格的过滤和验证
-
-3.使用最小权限原则配置数据库账号
+- 1.使用参数化查询（PreparedStatement）
+- 2.对用户输入进行严格的过滤和验证
+- 3.使用最小权限原则配置数据库账号
 
 #### XSS跨站脚本攻击
 
@@ -486,12 +455,9 @@ http://example.com/search?q=<script>alert('XSS')</script>
 ```
 
 **防御措施：**
-
-1.对用户输入进行HTML实体编码
-
-2.设置Content-Security-Policy响应头
-
-3.对Cookie设置HttpOnly和Secure标志
+- 1.对用户输入进行HTML实体编码
+- 2.设置Content-Security-Policy响应头
+- 3.对Cookie设置HttpOnly和Secure标志
 
 
 #### CSRF跨站请求伪造
@@ -506,12 +472,9 @@ http://example.com/search?q=<script>alert('XSS')</script>
 结果：用户在不知情的情况下，向攻击者转账10000元
 ```
 **防御措施：**
-
-1.使用CSRF Token
-
-2.设置SameSite Cookie属性
-
-3.验证Referer头（但可被绕过）
+- 1.使用CSRF Token
+- 2.设置SameSite Cookie属性
+- 3.验证Referer头（但可被绕过）
 
 #### 请求走私
 
@@ -527,12 +490,9 @@ Host: example.com
 实际请求：GET /admin（绕过前端WAF）
 ```
 **防御措施：**
-
-1.统一请求头解析规则
-
-2.使用严格的HTTP解析器
-
-3.配置正确的Content-Length和Transfer-Encoding
+- 1.统一请求头解析规则
+- 2.使用严格的HTTP解析器
+- 3.配置正确的Content-Length和Transfer-Encoding
 
 #### Host头攻击
 
@@ -545,12 +505,9 @@ Host: example.com
 结果：恶意网站缓存投毒，用户访问example.com时被重定向到evil.com
 ```
 **防御措施：**
-
-1.验证Host头
-
-2.使用白名单验证Host值
-
-3.在反向代理中配置正确的Host
+- 1.验证Host头
+- 2.使用白名单验证Host值
+- 3.在反向代理中配置正确的Host
 
 #### HTTP请求走私
 
@@ -569,12 +526,9 @@ Host: example.com
 实际请求：走私到后端服务器的/admin请求
 ```
 **防御措施：**
-
-1.统一HTTP解析规则
-
-2.禁用Transfer-Encoding（如果不需要）
-
-3.使用严格的HTTP解析器
+- 1.统一HTTP解析规则
+- 2.禁用Transfer-Encoding（如果不需要）
+- 3.使用严格的HTTP解析器
 
 ### 5.2 安全响应头配置
 
@@ -602,14 +556,10 @@ Host: example.com
 ### 6.1 抓取HTTP请求
 
 **步骤：**
-
-1.打开Wireshark，选择网卡
-
-2.在过滤器中输入：http.request.method == "GET"
-
-3.访问一个网站
-
-4.停止抓包，分析数据包
+- 1.打开Wireshark，选择网卡
+- 2.在过滤器中输入：http.request.method == "GET"
+- 3.访问一个网站
+- 4.停止抓包，分析数据包
 
 **预期结果：**
 ```plaintxt
@@ -617,22 +567,16 @@ No. Time        Source           Destination      Protocol         Info
 1   0.000000    192.168.1.100    93.184.216.34    HTTP              GET / HTTP/1.1
 ```
 **分析方法：**
-
-1.双击数据包，查看详细信息
-
-2.展开"Hypertext Transfer Protocol"字段
-
-3.查看请求行、请求头、请求体
+- 1.双击数据包，查看详细信息
+- 2.展开"Hypertext Transfer Protocol"字段
+- 3.查看请求行、请求头、请求体
 
 ### 6.2 抓取HTTP响应
 
 **步骤：**
-
-1.在Wireshark过滤器中输入：http.response.code == 200
-
-2.访问一个网站
-
-3.停止抓包，分析数据包
+- 1.在Wireshark过滤器中输入：http.response.code == 200
+- 2.访问一个网站
+- 3.停止抓包，分析数据包
 
 **预期结果：**
 ```plaintxt
@@ -640,21 +584,16 @@ No. Time        Source          Destination     Protocol    Info
 1   0.000000    93.184.216.34   192.168.1.100   HTTP        HTTP/1.1 200 OK
 ```
 **分析方法：**
-1.双击数据包，查看详细信息
-
-2.展开"Hypertext Transfer Protocol"字段
-
-3.查看状态行、响应头、响应体
+- 1.双击数据包，查看详细信息
+- 2.展开"Hypertext Transfer Protocol"字段
+- 3.查看状态行、响应头、响应体
 
 ### 6.3 抓取HTTPS握手
 
 **步骤：**
-
-1.在Wireshark过滤器中输入：ssl.handshake.type == 1
-
-2.访问一个HTTPS网站
-
-3.停止抓包，分析数据包
+- 1.在Wireshark过滤器中输入：ssl.handshake.type == 1
+- 2.访问一个HTTPS网站
+- 3.停止抓包，分析数据包
 
 **预期结果：**
 ```plaintxt
@@ -670,57 +609,38 @@ No. Time        Source          Destination     Protocol   Info
 9   0.010345    93.184.216.34   192.168.1.100   TLSv1.3    Finished
 ```
 **分析方法：**
-
-1.双击ClientHello数据包
-
-2.查看"Client Hello"字段中的支持的TLS版本和加密套件
-
-3,双击Certificate数据包
-
-4.查看证书的详细信息（颁发者、有效期、公钥）
+- 1.双击ClientHello数据包
+- 2.查看"Client Hello"字段中的支持的TLS版本和加密套件
+- 3.双击Certificate数据包
+- 4.查看证书的详细信息（颁发者、有效期、公钥）
 
 ## 七、Burp Suite抓包实战
 ### 7.1 拦截HTTP请求
 
 **步骤：**
-
-1.打开Burp Suite
-
-2.在Proxy标签中，设置浏览器代理为127.0.0.1:8080
-
-3.开启Intercept（拦截）
-
-4.浏览器访问网站
-
-5.查看被拦截的请求
+- 1.打开Burp Suite
+- 2.在Proxy标签中，设置浏览器代理为127.0.0.1:8080
+- 3.开启Intercept（拦截）
+- 4.浏览器访问网站
+- 5.查看被拦截的请求
 
 **分析方法：**
-
-1.查看请求行（Method、URI、HTTP版本）
-
-2.查看请求头（Host、User-Agent、Cookie等）
-
-3.查看请求体（POST参数）
-
-4.修改请求参数，Forward（转发）或Drop（丢弃）
+- 1.查看请求行（Method、URI、HTTP版本）
+- 2.查看请求头（Host、User-Agent、Cookie等）
+- 3.查看请求体（POST参数）
+- 4.修改请求参数，Forward（转发）或Drop（丢弃）
 
 ### 7.2 拦截HTTP响应
 
 **步骤：**
-
-1.在Burp Suite的Proxy标签中，选择"Response is Interception"
-
-2.浏览器访问网站
-
-3.查看被拦截的响应
+- 1.在Burp Suite的Proxy标签中，选择"Response is Interception"
+- 2.浏览器访问网站
+- 3.查看被拦截的响应
 
 **分析方法：**
-
-1.查看状态行（状态码、原因短语）
-
-2.查看响应头（Server、Set-Cookie、Content-Type等）
-
-3.查看响应体（HTML内容、JSON数据）
+- 1.查看状态行（状态码、原因短语）
+- 2.查看响应头（Server、Set-Cookie、Content-Type等）
+- 3.查看响应体（HTML内容、JSON数据）
 
 ### 7.3 修改请求参数测试漏洞
 
@@ -739,125 +659,79 @@ Forward请求，观察响应
 ## 八、学习收获
 
 ### ✅ 已掌握
-
-HTTP协议的结构和特点
-
-HTTP请求方法和请求头详解
-
-HTTP响应状态码和响应头详解
-
-HTTPS的工作原理和加密过程
-
-SSL/TLS证书的验证流程
-
-常见Web攻击原理（SQL注入、XSS、CSRF）
-
-安全响应头的配置方法
-
-使用Wireshark抓包分析HTTP/HTTPS
-
-使用Burp Suite拦截和修改请求
+- HTTP协议的结构和特点
+- HTTP请求方法和请求头详解
+- HTTP响应状态码和响应头详解
+- HTTPS的工作原理和加密过程
+- SSL/TLS证书的验证流程
+- 常见Web攻击原理（SQL注入、XSS、CSRF）
+- 安全响应头的配置方法
+- 使用Wireshark抓包分析HTTP/HTTPS
+- 使用Burp Suite拦截和修改请求
 
 ### 🔄 待深入
-
-HTTP/2和HTTP/3的新特性
-
-请求走私的高级利用技巧
-
-CSP策略的详细配置
-
-TLS 1.3的改进点
-
-更多Web攻击类型（SSRF、XXE等）
+- HTTP/2和HTTP/3的新特性
+- 请求走私的高级利用技巧
+- CSP策略的详细配置
+- TLS 1.3的改进点
+- 更多Web攻击类型（SSRF、XXE等）
 
 ## 九、待解决的问题
 ### ⏳ 疑问1：为什么POST请求不安全，而GET请求安全？
-
-初步理解： GET不修改服务器状态，POST会修改，但GET也能被攻击（如信息泄露）
-
-需要进一步： 理解幂等性和安全性的严格定义
+- 初步理解： GET不修改服务器状态，POST会修改，但GET也能被攻击（如信息泄露）
+- 需要进一步： 理解幂等性和安全性的严格定义
 
 ### ⏳ 疑问2：如何防止请求走私攻击？
-
-初步理解： 统一HTTP解析规则，禁用Transfer-Encoding
-
-需要进一步： 实际测试不同Web服务器的解析差异
+- 初步理解： 统一HTTP解析规则，禁用Transfer-Encoding
+- 需要进一步： 实际测试不同Web服务器的解析差异
 
 ### ⏳ 疑问3：CSP策略如何配置才能防止所有XSS？
-
-初步理解： default-src 'self'，script-src 'self' 'nonce-...'
-
-需要进一步： 理解CSP的各个指令和配置方法
+- 初步理解： default-src 'self'，script-src 'self' 'nonce-...'
+- 需要进一步： 理解CSP的各个指令和配置方法
 
 ## 十、参考资料
 ### 📚 书籍
-
-《HTTP权威指南》
-
-《Web安全深度剖析》
-
-《Burp Suite实战指南》
+- 《HTTP权威指南》
+- 《Web安全深度剖析》
+- 《Burp Suite实战指南》
 
 ### 🌐 在线资源
-
-MDN Web Docs - HTTP（https://developer.mozilla.org/zh-CN/docs/Web/HTTP）
-
-OWASP Top 10（https://owasp.org/www-project-top-ten/）
-
-Mozilla Observatory（https://developer.mozilla.org/en-US/observatory）
+- MDN Web Docs - HTTP（https://developer.mozilla.org/zh-CN/docs/Web/HTTP）
+- OWASP Top 10（https://owasp.org/www-project-top-ten/）
+- Mozilla Observatory（https://developer.mozilla.org/en-US/observatory）
 
 ### 🎬 视频教程
-
-B站：《Web安全入门》
-
-Coursera：《Web Security》
+- B站：《Web安全入门》
+- Coursera：《Web Security》
 
 ## 十一、总结
 ### 核心要点（背诵版）
 
 **HTTP请求方法：**
-
-**GET：** 获取资源（安全、幂等）
-
-**POST：** 提交数据（不安全、非幂等）
-
-**PUT：** 更新资源（不安全、幂等）
-
-**DELETE：** 删除资源（不安全、幂等）
+- **GET：** 获取资源（安全、幂等）
+- **POST：** 提交数据（不安全、非幂等）
+- **PUT：** 更新资源（不安全、幂等）
+- **DELETE：** 删除资源（不安全、幂等）
 
 **HTTP状态码：**
-
-**2xx：** 成功（200、201、204）
-
-**3xx：** 重定向（301、302、304）
-
-**4xx：** 客户端错误（400、401、403、404）
-
-**5xx：** 服务器错误（500、502、503）
+- **2xx：** 成功（200、201、204）
+- **3xx：** 重定向（301、302、304）
+- **4xx：** 客户端错误（400、401、403、404）
+- **5xx：** 服务器错误（500、502、503）
 
 **HTTPS加密过程：**
-
-1.ClientHello（发送支持的TLS版本和加密套件）
-
-2.ServerHello + Certificate（发送证书）
-
-3.验证证书
-
-4.生成会话密钥
-
-5.ClientKeyExchange（加密预主密钥）
-
-6.双方切换到加密通道
+- 1.ClientHello（发送支持的TLS版本和加密套件）
+- 2.ServerHello + Certificate（发送证书）
+- 3.验证证书
+- 4.生成会话密钥
+- 5.ClientKeyExchange（加密预主密钥）
+- 6.双方切换到加密通道
 
 **安全响应头：**
-
-**HSTS：** 强制HTTPS
-
-**CSP：** 防止XSS
-
-**X-Frame-Options：** 防止点击劫持
-
-**Secure + HttpOnly Cookie：** 防会话劫持
+- **HSTS：** 强制HTTPS
+- **CSP：** 防止XSS
+- **X-Frame-Options：** 防止点击劫持
+- **Secure + HttpOnly Cookie：** 防会话劫持
 
 ## 持续学习，持续分享！
 ```plaintxt
