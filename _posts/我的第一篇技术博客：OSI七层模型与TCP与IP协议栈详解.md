@@ -515,7 +515,17 @@ echo 30 > /proc/sys/net/ipv4/tcp_synack_retries
 
 # 启用TCP时间戳
 echo 1 > /proc/sys/net/ipv4/tcp_timestamps
+```
+**Linux系统TCP参数查看：** 
+```bash
+# 查看半连接队列长度
+cat /proc/sys/net/ipv4/tcp_max_syn_backlog
 
+# 查看全连接队列长度
+cat /proc/sys/net/ipv4/tcp_syncookies
+
+# 查看TIME_WAIT超时时间
+cat /proc/sys/net/ipv4/tcp_fin_timeout
 ```
 
 ### 6.2 RST攻击
