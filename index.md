@@ -4,8 +4,8 @@
 网安学习者，主攻Web安全、渗透测试、网络协议分析。2026年开始系统学习网络安全，90天自学计划进行中。
 
 ## 学习笔记
-- [网络基础学习笔记](/2026/03/15/HTTP_HTTPS协议详解)
-- [DNS与ARP协议详解](/2026/03/16/DNS与ARP协议详解)
+- [HTTP和HTTPS协议详解](_posts/HTTP和HTTPS协议详解.md)
+- [我的第一篇技术博客：OSI七层模型与TCP与IP协议栈详解](_posts/我的第一篇技术博客：OSI七层模型与TCP与IP协议栈详解.md)
 
 ## CTF Writeup
 - [攻防世界Web题解](/ctf/adworld-web.md) (即将发布)
