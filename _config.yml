@@ -1,12 +1,46 @@
-title: 我的技术博客
-description: 网安学习笔记与技术分享
+theme: minima
+title: 网络安全技术博客
+description: 网络安全学习笔记、CTF Writeup、漏洞分析、协议详解
+author: 你的名字
+lang: zh-CN
+timezone: Asia/Shanghai
+permalink: /:categories/:title/
+excerpt_separator: "<!--more-->"
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-feed
+
+# Markdown设置
+markdown: kramdown
+highlighter: rouge
+
+# 默认值
 defaults:
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-remote_theme: pmarsceill/just-the-docs
+      author: 你的名字
+
+# 社交链接
+social:
+  name: 你的名字
+  links:
+    - https://github.com/Etherwane/github.io
+    - https://twitter.com/你的用户名
+
+# 评论配置 (Giscus)
+# 需要先在 https://giscus.app 配置
+giscus:
+  repo: 你的用户名/你的用户名.github.io
+  repo_id: R_kgDOG_xxxx
+  category: Announcements
+  category_id: DIC_kwDOG_xxxx
+  mapping: pathname
+  strict: 0
+  reactions_enabled: 1
+  emit_metadata: 0
+  theme: light
+  lang: zh-CN
