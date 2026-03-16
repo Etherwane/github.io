@@ -22,11 +22,11 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      author: 你的名字
+      author: Etherwane
 
 # 社交链接
 social:
-  name: 你的名字
+  name: Etherwane
   links:
     - https://github.com/Etherwane/github.io
     - https://twitter.com/你的用户名
@@ -34,7 +34,7 @@ social:
 # 评论配置 (Giscus)
 # 需要先在 https://giscus.app 配置
 giscus:
-  repo: 你的用户名/你的用户名.github.io
+  repo: Etherwane/Etherwane.github.io
   repo_id: R_kgDOG_xxxx
   category: Announcements
   category_id: DIC_kwDOG_xxxx
