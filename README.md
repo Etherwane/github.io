@@ -47,7 +47,7 @@
 
 ## License
 
-© 2026 渊茧. All rights reserved.
+© 2026 Etherwane. All rights reserved.
 
 ---
 
