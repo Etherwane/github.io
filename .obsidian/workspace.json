@@ -4,41 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "dd9dc3fd831e4089",
+        "id": "b6b904a284e16c22",
         "type": "tabs",
         "children": [
           {
-            "id": "3fa38e61f1be4041",
+            "id": "03864a570c5148ad",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/基于DVWA靶场的暴力破解.md",
-                "mode": "source",
-                "source": true
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "基于DVWA靶场的暴力破解"
-            }
-          }
-        ]
-      },
-      {
-        "id": "9adca1d4856b499d",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "9f23902f58506719",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/基于DVWA靶场的暴力破解.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "基于DVWA靶场的暴力破解"
+              "title": "新标签页"
             }
           }
         ]
@@ -98,7 +74,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "a1e93987bdf2fd8f",
@@ -215,10 +192,10 @@
       "bases:新建数据库": false
     }
   },
-  "active": "3fa38e61f1be4041",
+  "active": "03864a570c5148ad",
   "lastOpenFiles": [
-    "未命名.base",
     "_posts/基于DVWA靶场的暴力破解.md",
+    "未命名.base",
     "_posts/HTTP和HTTPS协议详解.md",
     "markdown书写规范.md",
     "未命名 1.base"
